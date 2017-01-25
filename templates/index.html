@@ -1,0 +1,38 @@
+$def with (data, control, form)
+
+<h1>Arduino IoT</h1>
+
+<h3>Control de un Led</h3>
+
+<form method="POST">
+    $:form.render()
+</form>
+
+<div id='control'>
+    $if control.value == 1:
+        Encendido
+    $else:
+        Apagado
+</div>
+
+<h3>Lectura de un sensor</h3>
+
+<script type="text/javascript">
+window.onload = startInterval;
+function startInterval() {
+    setInterval("startTime();",1000);
+}
+
+function startTime() {
+    var now = new Date();
+    document.getElementById('time').innerHTML = now.getHours() + ":" + now.getMinutes() + ":" +now.getSeconds();
+}
+</script>
+
+<div id='time'>
+</div>
+
+<div id='data'>
+    Valor del sensor: <b>$data.value</b> actualizado: <b>$data.update_time</b>  
+</div>
+
